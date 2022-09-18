@@ -104,6 +104,9 @@ p{
     letter-spacing: 0em;
     text-align: left;
 }
+.text-center{
+    text-align: center;
+}
 
 .row{
     display: flex;
@@ -126,7 +129,7 @@ p{
 .landing-section{
     width: 100%;
     padding-inline: 8%;
-    height: 130vh;
+    height: 100vh;
     background-image: url(./assets/main-bg.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -160,10 +163,13 @@ p{
     line-height: 27px;
     letter-spacing: 0em;
     text-align: left;
-    color: #AE6B3F;
+    color: #414042;
     text-decoration: none;
     text-transform: uppercase;
 }   
+.nav-links a:active{
+    color: #AE6B3F;
+}
 .landing-main{
     height: 100%;
     padding-right: 35%;
@@ -171,6 +177,10 @@ p{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
+}
+.landing-main .row{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .line-separator{
     width: 89px;
@@ -186,6 +196,7 @@ p{
     line-height: 40px;
     letter-spacing: 0em;
     text-decoration: none;
+    border-radius: 0px;
 }
 .btn-dark{
     background: #414042;
@@ -205,6 +216,11 @@ p{
 .statistics-container{
     justify-content:space-around;
     padding-top: 20px;
+}
+.single-statistic, .vertical-separator{
+    width:unset;
+    padding-right: unset;
+    padding-left: unset;
 }
 
 .single-statistic h2, .single-statistic h5{
@@ -282,6 +298,9 @@ p{
     text-transform: uppercase;
     margin-top: 15px;
 }
+.single-project h4 a, .single-project h4 a:hover{
+    color: #fff;
+}
 .project-1{
     margin-left: -100px;
 }
@@ -336,6 +355,7 @@ p{
     letter-spacing: 0em;
     text-align: left;
     text-decoration: none;
+    color: #414042;
 }
 /* our sercices */
 .our-service_section{
@@ -491,13 +511,14 @@ p{
 
 
 .img-link a {
-    width: 60%;
+    width: 70%;
     background: #414042;
     color: #fff;
     padding: 10px;
     text-align: center;
     margin-top: -5.7%;
-    margin-left: 35%;
+    margin-left: auto;
+    margin-right: 2%;
     display: flex;
     position: relative;
     text-decoration: none;
@@ -572,3 +593,52 @@ p{
 
 
 
+
+
+
+/* contact styles */
+
+.contact-zig-zagline{
+    width: 57px; 
+    margin-left: calc(50% - 28.5px);
+}
+
+.contact-description{
+    width: 70%;
+    margin: 40px auto;
+}
+
+.contact-col-1{
+    margin-top: 40px;
+}
+
+
+/* contact form */
+
+.wpcf7-form{
+	width: 90%;
+	margin: auto;
+    padding: 8vh;
+}
+
+.wpcf7-form input,.wpcf7-form p, .wpcf7-form p label, .wpcf7-form-control{
+	width: 100%;
+}
+.wpcf7-form p label{
+    color: #fff;
+    margin-top: 2vh;
+}
+
+.wpcf7-form-control{
+    background: transparent;
+    color: white;
+    border: 0px;
+    border-bottom: 1px solid white;
+}
+.wpcf7-submit{
+    max-width: 50%;
+    margin-left: 25%;
+    background: white;
+    color: #414042;
+    margin-top: 4vh;
+}

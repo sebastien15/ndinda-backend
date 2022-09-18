@@ -14,16 +14,16 @@ get_header(); ?>
         $statistics = $section_one['statistics'];
 ?>
     <section class="landing-section">
-        <!--  require_once('../inc/nav.php'); ?> -->
+        <?php include('./wp-content/themes/ndinda/inc/nav.php'); ?>
         <main class="landing-main">
-            <h1><?= $hero_big_text; ?></h1>
-            <div class="row mb-<?= $hero_small_text; ?>">
+            <h1><?= $hero_big_text; ?> </h1>
+            <div class="row ">
                 <span class="line-separator">
-                    <img src="./assets/line.svg" alt="" srcset="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/line.svg" alt="" srcset="">
                 </span>
                 <h5><?= $hero_small_text; ?></h5>
             </div>
-            <a href="#" class="btn btn-dark"><?= $hero_cta_text; ?><img src="./assets/arrow.svg" class></a>
+            <a href="<?= $hero_cta_link; ?>" class="btn btn-dark"><?= $hero_cta_text; ?> <img src="<?= get_template_directory_uri(); ?>/assets/arrow-right-white.png" class></a>
         </main>
     </section>
 
@@ -31,26 +31,30 @@ get_header(); ?>
     <section class="statistics-section -mt-50 ">
         <div class="statistics-container bg-dark row">
             <?php
-
                 if( $statistics != null ) :
+                    $count = 0;
                     foreach( $statistics as $statistic ) :
                         $number = $statistic['number'];
                         $text = $statistic['text'];
-            ?>
 
-                
-                    
-                        <div class="single-statistic">
-                            <h2><?= $number; ?></h2>
-                            <h5><?= $text; ?></h5>
-                            <img src="<?= get_template_directory_uri(); ?>/assets/zigzagline.svg">
-                        </div>
-                    
+            ?>
+                <div class="single-statistic">
+                    <h2><?= $number; ?></h2>
+                    <h5><?= $text; ?></h5>
+                    <img src="<?= get_template_directory_uri(); ?>/assets/zigzagline.svg">
+                </div>
+                <?php   
+                            if($count < 2): 
+                ?>
+                    <div class="vertical-separator"></div>
             <?php
+                            endif;
+                        $count++;
                     endforeach;
                 endif;
-            ?>
+            ?>  
         </div>
+
     </section>
 
 <?php
@@ -88,7 +92,7 @@ get_header(); ?>
     endif;
 ?>
 
-
+    
 
 <?php 
     if(get_field('section_three')):
@@ -101,44 +105,43 @@ get_header(); ?>
         $cta_link = $section_three['cta_link'];
       
 ?>
-<div class="projects-section bg-dark">
-    <div class="header">
-        <h2> <?= $title; ?></h2>
-        <img src="<?= get_template_directory_uri(); ?>/assets/zigzagline-white.svg" alt="" class="" />
-    </div>
-
-
+    <div class="projects-section bg-dark" >
+        <div class="header">
+            <h2><?= $title; ?></h2>
+            <img src="<?= get_template_directory_uri(); ?>/assets/zigzagline-white.svg" alt="" class="" />
+        </div>
+        <div class="projects">
             <?php
                 if( $categories != null ) :
-                    foreach( $categories as $category ) :
-                        $image = $statistic['image'];
-                        $cat_text = $statistic['text'];
-                        $cat_link = $statistic['link'];
-            ?>
-            
-                <div class="projects">
-                    <div class="single-project project-1">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                        <h4><?= $cat_text; ?></h4>
-                    </div>
+                    $count = 1;
 
-                    <div class="single-project project-link">
-                        <a href="">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/more-cat-link.png" alt="" srcset="">
-                        </a>
+                    foreach( $categories as $category ) :
+                        $image = $category['image'];
+                        $cat_text = $category['text'];
+                        $cat_link = $category['link'];
+                    
+            ?>
+
+                    <div class="single-project project-<?= $count; ?>">
+                        <img src="<?= $image['url']; ?>" alt="" srcset="">
+                        <h4><a href="<?= $cat_link; ?>"><?= $text; ?></a></h4>
                     </div>
-                </div>
+                
             <?php
+                    $count++;
                     endforeach;
                 endif;
             ?>
-    <div class="projects-link">
-        <a href=""> <?= $cta_text; ?><img src="<?= get_template_directory_uri(); ?>/assets/arrow-right.png" alt=""
-                srcset=""></a>
+            <div class="single-project project-link">
+                    <a href="">
+                        <img src="<?= get_template_directory_uri(); ?>/assets/more-cat-link.png" alt="" srcset="">
+                    </a>
+            </div>
+        </div>
+        <div class="projects-link">
+            <a href="">View all projects  <img src="<?= get_template_directory_uri(); ?>/assets/arrow-right.png" alt="" srcset=""></a>
+        </div>
     </div>
-</div>
-
-
 <?php
     endif;
 ?>
@@ -148,57 +151,41 @@ get_header(); ?>
     if(get_field('our_services_section')):
 
         $service_section = get_field('our_services_section');
+        $services = $service_section['services'];
 
-        $icon= $service_section['icon'];
-        $title = $service_section['title'];
-        $text = $service_section['text'];
+        
       
 ?>
-<section class="our-service_section">
+<section class="our-service_section" id="services">
     <div class="our-service_header">
         <h3>Our Services</h3>
         <img src="<?= get_template_directory_uri(); ?>/assets/zigzagline.svg" alt="" class="" />
     </div>
     <div class="our-service_body">
-        <div class="our-service_single">
-            <img src="<?= get_template_directory_uri(); ?>/assets/architectural design.png" alt="" srcset="">
-            <h4>
-                ARCHITECTURAL DESIGN
-            </h4>
-            <p>
-                Combining creativity and functionalism to deliver sustainably
-                designed spaces that cater to the needs of its occupants
-            </p>
-        </div>
-        <div class="our-service_single">
-            <img src="<?= get_template_directory_uri(); ?>/assets/architectural consultancy.png" alt="" srcset="">
-            <h4>
-                ARCHITECTURAL CONSULTANCY
-            </h4>
-            <p>
-                Combining creativity and functionalism to deliver sustainably
-                designed spaces that cater to the needs of its occupants
-            </p>
-        </div>
-        <div class="our-service_single">
-            <img src="<?= get_template_directory_uri(); ?>/assets/interial design.png" alt="" srcset="">
-            <h4>
-                INTERIOR DESIGN & FITTING DESIGN
-            </h4>
-            <p>
-                We thrive to arrange and equip spaces that resonate with the identity and character of its occupants.
-            </p>
-        </div>
-        <div class="our-service_single">
-            <img src="<?= get_template_directory_uri(); ?>/assets/project managemenet.png" alt="" srcset="">
-            <h4>
-                PROJECT MANAGEMENT & SUPERVISION
-            </h4>
-            <p>
-                To ensure standardized execution of our architectural works in their construction phase, we closely
-                monitor the methods used to insure the sustainability of the projects we designed
-            </p>
-        </div>
+        <?php
+                if( $services != null ) :
+                    $count = 1;
+
+                    foreach( $services as $service ) :
+                        $icon= $service['icon'];
+                        $title = $service['title'];
+                        $description = $service['description'];
+                        
+                    
+        ?>
+
+            <div class="our-service_single">
+                <img src="<?=  $icon['url']; ?>" alt="" srcset="">
+                <h4> <?= $title; ?> </h4>
+                <p> <?= $description; ?> </p>
+            </div>
+        <?php
+                $count++;
+                endforeach;
+            endif;
+        ?>
+
+      
     </div>
 </section>
 

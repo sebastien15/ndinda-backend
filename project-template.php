@@ -2,7 +2,8 @@
 get_header(); ?>
 
 
-<section class="gallery">
+    <section class="gallery">
+        <?php include('./wp-content/themes/ndinda/inc/nav.php'); ?>
         <div class="container">
 
             <nav class="nav2">
@@ -21,24 +22,24 @@ get_header(); ?>
 
             <div class="row">
                 <div class="img-box gallery-item resid">
-                    <img src="residential.png" alt="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="">
                     <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
                 </div>
 
                 <div class="img-box gallery-item resid">
-                    <img src="residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-
-                </div>
-
-                <div class="img-box gallery-item resid">
-                    <img src="residential.png" alt="" srcset="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
                     <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
 
                 </div>
 
                 <div class="img-box gallery-item resid">
-                    <img src="residential.png" alt="" srcset="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
+                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
+
+                </div>
+
+                <div class="img-box gallery-item resid">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
                     <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
 
                 </div>
@@ -48,22 +49,22 @@ get_header(); ?>
 
             <div class="row">
                 <div class="img-box gallery-item apart">
-                    <img src="residential.png" alt="" srcset="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
                     <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
 
                 </div>
                 <div class="img-box gallery-item apart">
-                    <img src="residential.png" alt="" srcset="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
                     <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
 
                 </div>
                 <div class="img-box gallery-item apart">
-                    <img src="residential.png" alt="" srcset="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
                     <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
 
                 </div>
                 <div class="img-box gallery-item apart">
-                    <img src="residential.png" alt="" srcset="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
                     <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
 
                 </div>
