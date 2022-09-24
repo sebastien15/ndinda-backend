@@ -1,5 +1,41 @@
 <?php /* Template Name: project  */
-get_header(); ?>
+
+get_header(); 
+
+$current_url = strtok($_SERVER["REQUEST_URI"], '?');
+
+$categories = getCategories();
+
+$category_slug = $_GET['category'];
+if($category_slug != null){
+    $args=array(
+        'post_type' => 'project',
+        'posts_per_page'=>-1,
+        'paged' => 1,
+        'orderby' => 'date',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'category',    // taxonomy name
+                'field' => 'slug',        	// term_id, slug or name
+                'terms' => $category_slug     // term id, term slug or term name
+            )
+        ),
+        'order'   => 'DESC'
+    );
+}else{
+    $args=array(
+        'post_type' => 'project',
+        'posts_per_page'=>-1,
+        'paged' => 1,
+        'orderby' => 'date',
+        'order'   => 'DESC'
+    );
+}
+
+
+$projects = New wp_query($args);
+
+?>
 
 
     <section class="gallery">
@@ -8,71 +44,60 @@ get_header(); ?>
 
             <nav class="nav2">
                 <div class="nav-links gallery-filter">
-                    <span class="filter-item active" data-filter="all">All Projects</span>
-                    <span class="filter-item" data-filter="resid">Residential</span>
-                    <span class="filter-item" data-filter="apart">Apartments</span>
-                    <span class="filter-item" data-filter="mix">Mixed Use</span>
-                    <span class="filter-item" data-filter="hosp">Hospitality</span>
-                    <span class="filter-item" data-filter="wareh">Warehouse</span>
-                    <span class="filter-item" data-filter="renova">Renovations</span>
-                    <span class="filter-item" data-filter="furn">Furniture & Interior Design</span>
+                    <a class="filter-item <?= $category_slug == null ? 'active' : ''; ?>" href="<?= $current_url; ?>">All Projects</a>
+                    <?php
+                        
+                        foreach ($categories as $category) :
+                            $name = $category->cat_name;
+                            $slug = $category->slug;
+
+                            $activeClass ='';
+
+
+                            if( $category_slug != null && $slug == $category_slug ){
+                                    $activeClass = 'active';
+                            }
+
+                    ?>
+
+                        <a class="filter-item <?= $activeClass; ?>" href="<?= $current_url; ?>/?category=<?= $slug; ?>"><?= $name == null ? 'All Projects' : $name; ?></a>
+                    <?php
+                        $count++;
+                        endforeach;
+                    ?>
+                    
                 </div>
             </nav>
 
 
-            <div class="row">
-                <div class="img-box gallery-item resid">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-                </div>
+            <div class="row projects-container">
+                <?php
+                                                            
+                    if( $projects->have_posts() ) :
+        
+                            while ( $projects->have_posts() ) :
+                                    $projects->the_post();
+                                    $postId = get_the_ID();
 
-                <div class="img-box gallery-item resid">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
+                ?>
 
-                </div>
+                    <div class="img-box gallery-item resid" >
+                        <img src="<?= the_post_thumbnail_url(); ?>" alt="">
+                        <div class="img-link"><a href="<?= the_permalink(); ?>"><?= the_title(); ?><img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" /></a></div>
+                    </div>
 
-                <div class="img-box gallery-item resid">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-
-                </div>
-
-                <div class="img-box gallery-item resid">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-
-                </div>
-
-            </div>
-            <!-- row 1 end -->
-
-            <div class="row">
-                <div class="img-box gallery-item apart">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-
-                </div>
-                <div class="img-box gallery-item apart">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-
-                </div>
-                <div class="img-box gallery-item apart">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-
-                </div>
-                <div class="img-box gallery-item apart">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/residential.png" alt="" srcset="">
-                    <div class="img-link"><a href="">Mizero Modern Villa<img src="<?= get_template_directory_uri(); ?>/assets/arrow.svg" class></a></div>
-
-                </div>
+                <?php
+                        endwhile;
+                        wp_reset_postdata();
+                        wp_reset_query( );
+                endif;
+                ?>
 
             </div>
-            <!-- row 2 end -->
+           
         </div>
     </section>
+   
 
 
 <?php get_footer(); ?>

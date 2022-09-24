@@ -176,3 +176,30 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+
+function getCategories($taxonomy_name = null){
+
+    if($taxonomy_name != null ){
+		
+       $args = array(
+               'taxonomy' => $taxonomy_name,
+               'orderby' => 'name',
+               'order'   => 'ASC'
+           );
+		$categories = get_categories($args);
+
+
+		return $categories;
+    }else{
+		$args = array(
+			'orderby' => 'name',
+			'order'   => 'ASC'
+		);
+		$categories = get_categories($args);
+
+
+		return $categories;
+	}
+
+}
