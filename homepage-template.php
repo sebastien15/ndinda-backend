@@ -82,7 +82,7 @@ get_header(); ?>
         <h2><?= $col_two_title; ?></h2>
         <img src="<?= get_template_directory_uri(); ?>/assets/zigzagline.svg" />
         <p>
-        <?= $col_two_text; ?>
+            <?= $col_two_text; ?>
         </p>
     </article>
 </section>
@@ -117,6 +117,7 @@ get_header(); ?>
 
                     foreach( $categories as $category ) :
                         $image = $category['image'];
+                        $text = $category['text'];
                         $cat_text = $category['text'];
                         $cat_link = $category['link'];
                     
@@ -133,13 +134,13 @@ get_header(); ?>
                 endif;
             ?>
             <div class="single-project project-link">
-                    <a href="">
+                    <a href="/project-page/">
                         <img src="<?= get_template_directory_uri(); ?>/assets/more-cat-link.png" alt="" srcset="">
                     </a>
             </div>
         </div>
         <div class="projects-link">
-            <a href="">View all projects  <img src="<?= get_template_directory_uri(); ?>/assets/arrow-right.png" alt="" srcset=""></a>
+            <a href="/project-page/">View all projects  <img src="<?= get_template_directory_uri(); ?>/assets/arrow-right.png" alt="" srcset=""></a>
         </div>
     </div>
 <?php

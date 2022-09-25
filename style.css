@@ -104,6 +104,35 @@ p{
     letter-spacing: 0em;
     text-align: left;
 }
+
+@media only screen and (max-width: 600px) {
+
+    h1{
+        font-size: 40px;
+        line-height: 55px;
+    }
+    h2{
+        font-size: 33px;
+        line-height: 38px;
+    }
+    h3{
+        font-size: 28px;
+        line-height: 33px;
+    }
+    h5{
+        font-size: 22px;
+        line-height: 24px;
+    }
+    p{
+        font-size: 18px;
+        line-height: 21px;
+    }
+
+    .landing-main{
+        padding-right: 0px;
+    }
+}
+
 .text-center{
     text-align: center;
 }
@@ -700,6 +729,7 @@ p{
     justify-content: space-between;
 }
 .fix-nav-top{
+    width: 100%;
     position: absolute;
     top: 0;
     z-index: 9999999;
@@ -855,3 +885,91 @@ p{
     backface-visibility: hidden;
     margin-top: -1px;
 }
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .nav{
+        padding-top: 30px;
+    }
+    .nav-links{
+        padding-top: 10px;
+    }
+
+    .landing-main{
+        padding-right: 0px;
+    }
+
+    .projects{
+        flex-direction: column;
+    }
+
+    .projects-section .header h2{
+        font-size: 33px;
+    }
+
+    .projects-section .header{
+        padding-top: 50px;
+    }
+
+    .project-1 , .project-2, .project-3 , .project-4,.project-link img{
+        margin-left: unset;
+        top: unset;
+    }
+
+    .project-1 img, .project-2 img, .project-3 img, .project-4 img{
+        width: 100%;
+    }
+
+    .single-project h4{
+        padding-right: 20px;
+        padding-bottom: 30px;
+    }
+
+    .projects-link{
+        padding-top: 40px;
+    }
+
+    .btn{
+        width: 75%;
+    }
+    .our-service_header img{
+        width: 90%;
+        margin: auto;
+    }
+    .statistics-container{
+        flex-direction: row;
+    }
+
+    .single-statistic h2{
+        font-size: 18px;
+    }
+
+    .single-statistic h5{
+        font-size: 18px;
+    }
+
+    .about-image, .about-description{
+        width: 100%;
+    }
+    .about-description{
+        padding-top: 30px;
+    }
+
+    .our-service_body{
+        width: 80%;
+    }
+    .our-service_single{
+        width: 100%;
+    }
+
+    .footer{
+        gap: 20px;
+    }
+    .card {
+        width: 80%;
+    }
+}
+
