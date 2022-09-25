@@ -757,13 +757,13 @@ p{
     bottom: 35px
 }
 
-.btn {
+/* .btn {
     margin-top: 36px;
     margin-bottom: 45px;
     background-color: #AB47BC;
     border: none;
     color: #fff
-}
+} */
 
 .text-muted{
     text-align: center;
@@ -771,12 +771,12 @@ p{
     margin-top: 20px;
 }
 
-.btn:hover {
+/* .btn:hover {
     -webkit-transform: scale(1.05);
     -ms-transform: scale(1.05);
     transform: scale(1.05);
     color: #fff
-}
+} */
 
 .header {
     padding-top: 40px
