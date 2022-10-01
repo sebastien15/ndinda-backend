@@ -57,7 +57,7 @@ get_header();
                     <a class="team-col team">Team</a>
                 </div>
                 <div class="col-sm-6">
-                    <a class="team-col description">Description</a>
+                    <a class="team-col description">Details</a>
                 </div>
             </section>
 
@@ -65,8 +65,13 @@ get_header();
                 <div class="team_section collapse show">
                     <div class='container mx-auto mt-5 col-md-10 mt-100'>
                         <div class="header">
-                            <div class="title">Our Expert Team</div>
-                            <p><small class="text-muted">Lorem Ipsum dolor samet</small></p>
+                            <?php 
+                                if( get_field('team_section') ): 
+                                    $sec = get_field('team_section');
+                            ?>
+                            <div class="title"><?= $sec['section_title'] ?></div>
+                            <p><small class="text-muted"><?= $sec['section_description'] ?></small></p>
+                            <?php endif; ?>
                         </div>
                         <div class="row justify-content-center pb-5">
                             <?php 
@@ -81,6 +86,8 @@ get_header();
                                     <div class="card-body p-0">
                                         <div class="profile"> <img src=" <?= $member['image']['url']; ?>"> </div>
                                         <div class="card-title mt-4"> <?= $member['name']; ?><br /> <small> <?= $member['title']; ?></small> </div>
+                                        <div class="card-title mt-4"> <a href="mailto:<?= $member['email']; ?>" >  <?= $member['email']; ?></a> </div>
+                                        <div class="card-title mt-4"> <a href="tel:<?= $member['tel_number']; ?>" > <?= $member['tel_number']; ?></a> </div>
                                         <div class="card-subtitle">
                                             <p> <small class="text-muted">  <?= $member['description']; ?> </small> </p>
                                         </div>
@@ -104,13 +111,22 @@ get_header();
                 </div>
             </section>
         </div>
-        <section class="project_navigation">
-            <div class="">
-                <a href="http://">Previous Project</a>
-            </div>
-            <div class="">
-                <a href="http://">Next Project</a>
-            </div>
+        <section class="project_navigation container">
+            
+            <?php
+
+                if (get_permalink(get_adjacent_post(false, '', true)) != get_permalink()) {
+                   
+                    
+            ?>
+                <div class="">
+                    <a href="<?php echo get_permalink(get_adjacent_post(false, '', true)); ?>">Next Project</a>
+                </div>
+                   
+            <?php
+                }
+            ?>
+
         </section>
 	</main>
    

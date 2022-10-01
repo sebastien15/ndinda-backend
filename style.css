@@ -524,6 +524,16 @@ p{
     padding: 0.55rem;
    
 }
+
+.project_navigation a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.project_navigation a:hover{
+    color: #AE6B3F;
+}
+
 @media only screen and (max-width: 600px) {
     .logo{
         width: 100px;
@@ -543,8 +553,13 @@ p{
     height: auto;
    
 }
-
-
+.card-title a{
+    text-decoration: none;
+    color: inherit;
+}
+.card-title a:hover{
+    color: #AE6B3F;
+}
 .img-link a {
     width: 70%;
     background: #414042;
@@ -710,6 +725,7 @@ p{
     font-size: 14px;
     color: #414042;
     display: block;
+    text-decoration: none;
 }
 .second_nav-container{
     position: relative;
@@ -720,13 +736,16 @@ p{
     min-height: 100vh;
     padding-top: 5vh;
 }
+.second_nav{
+    margin-inline: 0px;
+}
 .second_nav .col-sm-6:hover{
     background: rgb(245, 242, 242);
 }
 .project_navigation{
     display: flex;
     margin-top: 30px;
-    justify-content: space-between;
+    justify-content:flex-end;
 }
 .fix-nav-top{
     width: 100%;
@@ -764,7 +783,9 @@ p{
 .profile img {
     width: 68px;
     height: 68px;
-    border-radius: 50%
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
 }
 
 .card {
@@ -816,7 +837,7 @@ p{
     top: 0;
     left: 0;
     display: block;
-    width: 100%;
+    width: 98%;
     height: 5rem;
     overflow: hidden;
     z-index: 4;

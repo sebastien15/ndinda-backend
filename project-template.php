@@ -70,7 +70,7 @@ $projects = New wp_query($args);
             </nav>
 
 
-            <div class="row projects-container">
+            <div class="row projects-container ">
                 <?php
                                                             
                     if( $projects->have_posts() ) :

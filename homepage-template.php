@@ -75,7 +75,7 @@ get_header(); ?>
 ?>
 <section class="about-section row">
     <div class="about-image">
-        <img src="<?= get_template_directory_uri(); ?>/assets/about-img.png">
+        <img src="<?= $col_one_image['url']; ?>">
     </div>
 
     <article class="about-description">
